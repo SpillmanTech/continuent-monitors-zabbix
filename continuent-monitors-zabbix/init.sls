@@ -1,11 +1,11 @@
-{% from "continuent-monitors-zabbix/map.jinja" import continuent-monitors-zabbix with context %}
+{% from "continuent-monitors-zabbix/map.jinja" import monitors with context %}
 
-continuent-monitors-zabbix:
-  pkg.installed:
-    - pkgs: {{ continuent-monitors-zabbix.pkgs }}
-  service:
-    - running
-    - name: {{ continuent-monitors-zabbix.service }}
-    - enable: True
-    - require:
-      - pkg: continuent-monitors-zabbix
+setup_{{ monitors.config.thome }}:
+  file.directory:
+    - makedirs: True
+    - name: {{ monitors.config.thome }}
+
+continuent-monitors-zabbix-files:
+  file.recurse:
+    - source: salt://continuent-monitors-zabbix/files/zabbix*
+    - name: {{ monitors.config.thome }}

@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
 
   
-  config.vm.box = "rhel/7"
+  config.vm.box = "centos-7"
   
 
   # Disable automatic box update checking. If you disable this, then

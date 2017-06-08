@@ -1,10 +1,10 @@
-{% set continuent-monitors-zabbix = salt['grains.filter_by']({
+{% set monitors = salt['grains.filter_by']({
     'default': {
         'pkgs': 'continuent-monitors-zabbix',
         'service': 'continuent-monitors-zabbix',
         'conf_file': '/etc/continuent-monitors-zabbix/continuent-monitors-zabbix.conf',
         'config': {
-            'key': 'value',
+            'thome': '/opt/continuent/releases/continuent-tungsten-4.0.4-3585373_pid17703/cluster-home/bin',
         },
     },
     'Debian': {
