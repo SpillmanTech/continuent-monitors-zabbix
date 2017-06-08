@@ -1,0 +1,6 @@
+continuent-monitors-zabbix:
+  lookup:
+    pkg: mycontinuent-monitors-zabbix
+    conf_file: /usr/local/etc/continuent-monitors-zabbix/continuent-monitors-zabbix.conf
+  config:
+    key: othervalue

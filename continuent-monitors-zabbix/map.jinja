@@ -1,0 +1,14 @@
+{% set continuent-monitors-zabbix = salt['grains.filter_by']({
+    'default': {
+        'pkgs': 'continuent-monitors-zabbix',
+        'service': 'continuent-monitors-zabbix',
+        'conf_file': '/etc/continuent-monitors-zabbix/continuent-monitors-zabbix.conf',
+        'config': {
+            'key': 'value',
+        },
+    },
+    'Debian': {
+    },
+    'RedHat': {
+    },
+}, grain='os_family', merge=salt['pillar.get']('continuent-monitors-zabbix:lookup'), base='default') %}

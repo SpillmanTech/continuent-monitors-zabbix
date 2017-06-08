@@ -1,0 +1,4 @@
+base:
+  '*':
+    - continuent-monitors-zabbix
+    - continuent-monitors-zabbix.tests

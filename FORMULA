@@ -1,0 +1,8 @@
+name: continuent-monitors-zabbix
+os: RedHat, CentOS
+os_family: RedHat
+version: 201706
+release: 1
+summary: Formula for deploying zabbix monitoring templates
+description: Formula for deploying zabbix monitoring templates
+top_level_dir: continuent-monitors-zabbix
