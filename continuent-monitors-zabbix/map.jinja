@@ -5,6 +5,11 @@
         'conf_file': '/etc/continuent-monitors-zabbix/continuent-monitors-zabbix.conf',
         'config': {
             'thome': '/opt/continuent/releases/*/cluster-home/bin',
+            'max_warn_latency': 50,
+            'max_critical_latency': 100,
+            'dataservice_opts': '',
+            'seconds_to_wait_when_monitoring_progress': 3,
+            'service_opts': '-r -c',
         },
     },
     'Debian': {

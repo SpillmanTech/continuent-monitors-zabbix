@@ -1,6 +1,13 @@
-{# Template for a config file. Context object name: config #}
-[section]
-{% for key, value in config.items() %}
-{{ key }}={{ value }}
-{% endfor %}
+#monitors response latency of slaves
+UserParameter=zabbix_tungsten_latency,{{ DIR }}/zabbix_tungsten_latency -w {{ max_warn_latency }} -c {{ max_critical_latency }}
 
+#monitors the state of resources within a dataservice
+UserParameter=zabbix_tungsten_online,{{ DIR }}/zabbix_tungsten_online {{ dataservice_opts }}
+
+# monitors the amount of time it takes to replicate a cluster heartbeat
+UserParameter=zabbix_tungsten_progress,{{ DIR }}/zabbix_tungsten_progress -t {{ seconds_to_wait_when_monitoring_progress }}
+
+# service_opts depends on node purpose
+#-r replicator and manager services
+#-c connector service
+UserParameter=zabbix_tungsten_services,{{ DIR }}/zabbix_tungsten_services {{ service_opts }}
