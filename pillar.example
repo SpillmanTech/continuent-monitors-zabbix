@@ -1,6 +1,13 @@
 continuent-monitors-zabbix:
   lookup:
-    pkg: mycontinuent-monitors-zabbix
-    conf_file: /usr/local/etc/continuent-monitors-zabbix/continuent-monitors-zabbix.conf
-  config:
-    key: othervalue
+    config:
+{% if 'ton' in grains['id'] or 'tdc' in grains['id'] %}
+      dataservice_opts: '-s tdc'
+{% elif 'slc' in grains['id'] %}
+      dataservice_opts: '-s slc'
+{% endif %}
+{% if 'con' in grains['id'] %}
+      service_opts: '-c'
+{% elif 'db' in grains['id'] %}
+      service_opts: '-r'
+{% endif %}
