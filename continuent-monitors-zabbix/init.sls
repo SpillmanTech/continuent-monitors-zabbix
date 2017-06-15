@@ -26,6 +26,7 @@ continuent_monitors-zabbix-conf_{{ instance_dir }}:
 
 continuent_monitors-zabbix-agent_{{ instance_dir }}:
   service.running:
+    - name: zabbix-agent
     - watch:
       - file: continuent_monitors-zabbix-conf_{{ instance_dir }}
 {% endfor %}
