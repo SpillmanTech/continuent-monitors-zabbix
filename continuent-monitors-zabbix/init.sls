@@ -24,6 +24,15 @@ continuent_monitors-zabbix-conf_{{ instance_dir }}:
     - context:
         DIR: {{ DIR }}
 
+continuent-monitors-zabbix-sudo:
+  file.managed:
+    - name: /etc/sudoers.d/zabbix-tungsten
+    - contents:
+        - Defaults:zabbix !requiretty
+        - Defaults:tungsten !requiretty
+        - 'zabbix ALL = NOPASSWD: {{ DIR }}/zabbix_tungsten_latency, {{ DIR }}/zabbix_tungsten_online, {{ DIR }}/zabbix_tungsten_progress, {{ DIR }}/zabbix_tungsten_services'
+
+
 continuent_monitors-zabbix-agent_{{ instance_dir }}:
   service.running:
     - name: zabbix-agent

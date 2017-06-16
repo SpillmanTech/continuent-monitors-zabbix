@@ -1,15 +1,15 @@
 #monitors response latency of slaves
 {% if 'db' in grains['id'] %}
-UserParameter=zabbix_tungsten_latency,{{ DIR }}/zabbix_tungsten_latency -w {{ max_warn_latency }} -c {{ max_critical_latency }}
+UserParameter=zabbix_tungsten_latency,sudo {{ DIR }}/zabbix_tungsten_latency -w {{ max_warn_latency }} -c {{ max_critical_latency }}
 
 #monitors the state of resources within a dataservice
-UserParameter=zabbix_tungsten_online,{{ DIR }}/zabbix_tungsten_online {{ dataservice_opts }}
+UserParameter=zabbix_tungsten_online,sudo {{ DIR }}/zabbix_tungsten_online {{ dataservice_opts }}
 
 # monitors the amount of time it takes to replicate a cluster heartbeat
-UserParameter=zabbix_tungsten_progress,{{ DIR }}/zabbix_tungsten_progress -t {{ seconds_to_wait_when_monitoring_progress }}
+UserParameter=zabbix_tungsten_progress,sudo {{ DIR }}/zabbix_tungsten_progress -t {{ seconds_to_wait_when_monitoring_progress }}
 {% endif %}
 
 # service_opts depends on node purpose
 #-r replicator and manager services
 #-c connector service
-UserParameter=zabbix_tungsten_services,{{ DIR }}/zabbix_tungsten_services {{ service_opts }}
+UserParameter=zabbix_tungsten_services,sudo {{ DIR }}/zabbix_tungsten_services {{ service_opts }}
